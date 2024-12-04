@@ -51,6 +51,7 @@ if(HIREDIS_FROM_INTERNET)
     INTERFACE_INCLUDE_DIRECTORIES "$<BUILD_INTERFACE:${hiredis_dir}/include>")
 else()
   find_package(PkgConfig)
+
   if(PKG_CONFIG_FOUND)
     pkg_check_modules(HIREDIS hiredis>=${hiredis_FIND_VERSION})
     find_library(HIREDIS_LIBRARY ${HIREDIS_LIBRARIES} HINTS ${HIREDIS_LIBDIR})

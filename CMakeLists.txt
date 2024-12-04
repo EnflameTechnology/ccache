@@ -96,6 +96,11 @@ if(MSVC AND NOT CMAKE_TOOLCHAIN_FILE MATCHES "vcpkg|conan")
   set(ZSTD_FROM_INTERNET_DEFAULT ON)
 endif()
 
+if(UNIX)
+  set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+elseif(WIN32 OR MSVC)
+  set(CMAKE_FIND_LIBRARY_SUFFIXES ".lib")
+endif()
 option(ZSTD_FROM_INTERNET "Download and use libzstd from the Internet" ${ZSTD_FROM_INTERNET_DEFAULT})
 find_package(zstd 1.1.2 REQUIRED)
 
